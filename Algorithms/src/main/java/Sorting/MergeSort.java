@@ -1,14 +1,14 @@
-package Algorithms;
+package Sorting;
 
 import java.util.Arrays;
 
-public class MergeSort implements Sort {
+public class MergeSort<T extends Comparable<T>> implements Sort<T> {
     @Override
-    public Comparable[] sort(Comparable[] array) {
+    public Comparable<T>[] sort(Comparable<T>[] array) {
         return divide(array, 0, array.length - 1);
     }
 
-    public Comparable[] divide(Comparable[] array, int l, int r) {
+    public Comparable<T>[] divide(Comparable<T>[] array, int l, int r) {
         if (l < r) {
             int m = (l + r) / 2;
             divide(array, l, m);
@@ -18,17 +18,17 @@ public class MergeSort implements Sort {
         return array;
     }
 
-    public void merge(Comparable[] array, int l, int m, int r) {
+    public void merge(Comparable<T>[] array, int l, int m, int r) {
         int llen = m - l + 1;
         int rlen = r - m;
-        Comparable[] larr = Arrays.copyOfRange(array, l, l + llen);
-        Comparable[] rarr = Arrays.copyOfRange(array, m + 1, m + rlen + 1);
+        Comparable<T>[] larr = Arrays.copyOfRange(array, l, l + llen);
+        Comparable<T>[] rarr = Arrays.copyOfRange(array, m + 1, m + rlen + 1);
 
         int i = 0;
         int j = 0;
         int k = l;
         while (i < llen && j < rlen) {
-            if (larr[i].compareTo(rarr[j]) <= 0) {
+            if (larr[i].compareTo((T) rarr[j]) <= 0) {
                 array[k] = larr[i];
                 i++;
             } else {

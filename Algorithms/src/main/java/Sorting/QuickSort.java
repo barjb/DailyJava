@@ -1,13 +1,13 @@
-package Algorithms;
+package Sorting;
 
-public class QuickSort implements Sort {
+public class QuickSort<T extends Comparable<T>> implements Sort<T> {
 
     @Override
-    public Comparable[] sort(Comparable[] array) {
+    public Comparable<T>[] sort(Comparable<T>[] array) {
         return qsort(array, 0, array.length - 1);
     }
 
-    public Comparable[] qsort(Comparable[] array, int l, int r) {
+    public Comparable<T>[] qsort(Comparable<T>[] array, int l, int r) {
         if (l < r) {
             int i = divide(array, l, r);
             qsort(array, l, i - 1);
@@ -16,14 +16,14 @@ public class QuickSort implements Sort {
         return array;
     }
 
-    public int divide(Comparable[] array, int l, int r) {
+    public int divide(Comparable<T>[] array, int l, int r) {
         int index = chooseIndex(l, r);
-        Comparable pivot = array[index];
+        Comparable<T> pivot = array[index];
         swap(array, index, r);
 
         int current = l;
         for (int i = l; i <= r - 1; i++) {
-            if (array[i].compareTo(pivot) < 0) {
+            if (array[i].compareTo((T) pivot) < 0) {
                 swap(array, i, current);
                 current = current + 1;
             }
@@ -32,9 +32,9 @@ public class QuickSort implements Sort {
         return current;
     }
 
-    public void swap(Comparable[] array, int i, int j) {
+    public void swap(Comparable<T>[] array, int i, int j) {
         if (i != j) {
-            Comparable temp = array[i];
+            Comparable<T> temp = array[i];
             array[i] = array[j];
             array[j] = temp;
         }
