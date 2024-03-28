@@ -27,5 +27,4 @@ public class AVLNode<T extends Comparable<T>> extends Node<T> {
         this.right = node;
     }
 
-
 }

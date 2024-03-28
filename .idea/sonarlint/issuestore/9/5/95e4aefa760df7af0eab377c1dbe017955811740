@@ -1,0 +1,8 @@
+
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Óû³ö8•µƒè1
+Z
+java:S1854	"=Remove this useless assignment to local variable "mergeSort".(Ä·úñ8ßºƒè1
+K
+java:S1481	".Remove this unused "mergeSort" local variable.(Ä·úñ8ãºƒè1
+G	java:S106"+Replace this use of System.out by a logger.(¶ÌŒè8œµƒè1
+]	java:S125"<This block of commented-out lines of code should be removed.(æ¼¡üÿÿÿÿ8çºƒè1

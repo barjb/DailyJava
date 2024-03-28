@@ -18,8 +18,6 @@ public class BinaryTree<T extends Comparable<T>> {
             current.setLeft(addRecursive(current.getLeft(), value));
         } else if (current.getValue().compareTo(value) < 0) {
             current.setRight(addRecursive(current.getRight(), value));
-        } else {
-            return current;
         }
         return current;
     }
