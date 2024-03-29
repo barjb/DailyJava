@@ -25,3 +25,8 @@ X
 .Algorithms/src/main/java/Trees/BinaryTree.java,0\d\0de532c5d8d470d153a5c4ac7a168efaeac8fd06
 [
 +Algorithms/src/main/java/Trees/AVLTree.java,4\b\4b18fd0f1597f20b4df1615ee40526a4362581bd
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+_
+/Algorithms/src/test/java/Trees/AVLTreeTest.java,a\d\ad3942e4be8ab993c3dd8d05ad4ed9ec514f9c06

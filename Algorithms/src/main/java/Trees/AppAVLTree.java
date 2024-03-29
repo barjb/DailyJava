@@ -3,17 +3,17 @@ package Trees;
 public class AppAVLTree {
     public static void main(String[] args) {
         AVLTree<Integer> tree = new AVLTree<>();
-        tree.add(1);
-        System.out.println("after 1");
-        tree.add(2);
-        System.out.println("after 2");
-        tree.add(3);
-        System.out.println("after 3");
-        tree.add(4);
-        System.out.println("after 4");
-//        tree.DFS();
-//        System.out.println("before");
-//        System.out.println(tree.isBalanced(tree.root));
-//        System.out.println("done");
+        tree.add(33);
+        tree.add(13);
+        tree.add(53);
+        tree.add(11);
+        tree.add(21);
+        tree.add(61);
+        tree.add(8);
+        tree.add(9);
+        tree.add(52);
+        tree.add(50);
+        tree.add(49);
+        tree.DFS();
     }
 }

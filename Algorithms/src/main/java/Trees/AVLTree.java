@@ -7,13 +7,15 @@ public class AVLTree<T extends Comparable<T>> extends BinaryTree<T> {
     public void add(T value) {
         super.add(value);
         updateBalanceFactor(root);
-        System.out.println("balance factor");
-        recursiveDFS(root);
         while (!isBalanced(root)) {
-            balanceTree(null, root);
+            Node<T> unbalanced = findUnbalanced(root);
+            if (Objects.nonNull(unbalanced.left) && Math.abs(((AVLNode<T>) unbalanced.left).getBf()) > 1) {
+                balanceTree(unbalanced, unbalanced.left);
+            } else if (Objects.nonNull(unbalanced.right) && Math.abs(((AVLNode<T>) unbalanced.right).getBf()) > 1) {
+                balanceTree(unbalanced, unbalanced.right);
+            }
+//            balanceTree(null, root);
             updateBalanceFactor(root);
-            System.out.println("new while() balance factor");
-            recursiveDFS(root);
         }
     }
 
@@ -43,6 +45,13 @@ public class AVLTree<T extends Comparable<T>> extends BinaryTree<T> {
         return height;
     }
 
+    public int getHeight(Node<T> node) {
+        if (Objects.isNull(node)) {
+            return 0;
+        }
+        return Math.max(getHeight(node.left), getHeight(node.right)) + 1;
+    }
+
     @Override
     protected void recursiveDFS(Node<T> node) {
         if (node != null) {
@@ -54,15 +63,13 @@ public class AVLTree<T extends Comparable<T>> extends BinaryTree<T> {
 
     public void rotateLeft(Node<T> parent, Node<T> node) {
         Node<T> y = node.right;
-        if (y.left != null) {
-            node.right = y.left;
-        }
+        node.right = y.left;
         if (parent == null) {
             y.left = node;
             root = y;
         } else if (parent.left == node) {
             parent.left = y;
-        } else {
+        } else if (parent.right == node) {
             parent.right = y;
         }
         y.left = node;
@@ -70,15 +77,12 @@ public class AVLTree<T extends Comparable<T>> extends BinaryTree<T> {
 
     public void rotateRight(Node<T> parent, Node<T> node) {
         Node<T> x = node.left;
-        if (x.right != null) {
-            node.left = x.right;
-        }
+        node.left = x.right;
         if (parent == null) {
-            x.right = node;
             root = x;
         } else if (parent.right == node) {
             parent.right = x;
-        } else {
+        } else if (parent.left == node) {
             parent.left = x;
         }
         x.right = node;
@@ -94,24 +98,39 @@ public class AVLTree<T extends Comparable<T>> extends BinaryTree<T> {
         rotateLeft(parent, node);
     }
 
+    public Node<T> findUnbalanced(Node<T> node) {
+        if (Objects.isNull(node)) {
+            return null;
+        }
+        if ((Objects.nonNull(node.left) && Math.abs(((AVLNode<T>) node.left).getBf()) > 1) || (Objects.nonNull(node.right) && Math.abs(((AVLNode<T>) node.right).getBf()) > 1)) {
+            return node;
+        }
+        Node<T> left = findUnbalanced(node.left);
+        Node<T> right = findUnbalanced(node.right);
+        return Objects.nonNull(left) ? left : right;
+
+    }
+
     public void balanceTree(Node<T> parent, Node<T> node) {
+
         if (Math.abs(((AVLNode<T>) node).getBf()) > 1) {
             if (Objects.nonNull(node.left) && Math.abs(((AVLNode<T>) node.left).getBf()) > 1) {
                 balanceTree(node, node.left);
             } else if (Objects.nonNull(node.right) && Math.abs(((AVLNode<T>) node.right).getBf()) > 1) {
                 balanceTree(node, node.right);
-            }
-            if (((AVLNode<T>) node).getBf() > 0) {
-                if(node.left.getLeft() != null){
-                    rotateRight(node,node.left);
-                }else {
-                    leftRight(parent,node);
+            } else if (((AVLNode<T>) node).getBf() > 0) {
+                // node.left cannot be null here due to BF value
+                if (node.left.left != null && node.left.right == null) {
+                    rotateRight(parent, node);
+                } else {
+                    leftRight(parent, node);
                 }
             } else if (((AVLNode<T>) node).getBf() < 0) {
-                if(node.right.getRight() != null){
-                    rotateLeft(node,node.right);
-                }else {
-                    rightLeft(parent,node);
+                // node.right cannot be null here due to BF value
+                if (node.right.right != null && node.right.left == null) {
+                    rotateLeft(parent, node);
+                } else {
+                    rightLeft(parent, node);
                 }
             }
         }
@@ -119,12 +138,9 @@ public class AVLTree<T extends Comparable<T>> extends BinaryTree<T> {
 
     public boolean isBalanced(Node<T> node) {
         if (node == null) return true;
-
-        if ((Objects.nonNull(node.left) && Math.abs(((AVLNode<T>) node.left).getBf()) <= 1) ||
-                (Objects.nonNull(node.right) && Math.abs(((AVLNode<T>) node.right).getBf()) <= 1)) {
-            return isBalanced(node.left) && isBalanced(node.right);
+        if (Math.abs(((AVLNode<T>) node).getBf()) > 1) {
+            return false;
         }
-        if (Objects.isNull(node.left) && Objects.isNull(node.right)) return true;
-        return false;
+        return isBalanced(node.left) && isBalanced(node.right);
     }
 }

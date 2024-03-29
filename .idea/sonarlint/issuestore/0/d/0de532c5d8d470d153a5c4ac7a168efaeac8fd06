@@ -1,6 +1,0 @@
-
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(õúü§8ÆƒÄè1
-j	java:S100&"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨É…Å8ŞƒÄè1
-G	java:S106,"+Replace this use of System.out by a logger.(ûğ„‚8àƒÄè1
-i	java:S1002"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶œ±8àƒÄè1
-G	java:S106:"+Replace this use of System.out by a logger.(É­‰º8âƒÄè1
