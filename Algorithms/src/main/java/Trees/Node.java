@@ -1,6 +1,6 @@
 package Trees;
 
-public class Node<T extends Comparable> {
+public class Node<T extends Comparable<T>> {
     protected T value;
     protected Node<T> left;
     protected Node<T> right;

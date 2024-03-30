@@ -33,6 +33,93 @@ public class AVLTree<T extends Comparable<T>> extends BinaryTree<T> {
         }
         return current;
     }
+    public void delete(T value){
+        if (!contains(value)) return;
+        Node<T> parent = findNodeParent(root, value);
+        deleteNode(parent,value);
+        while (!isBalanced(root)) {
+            Node<T> unbalanced = findUnbalanced(root);
+            if (Objects.nonNull(unbalanced.left) && Math.abs(((AVLNode<T>) unbalanced.left).getBf()) > 1) {
+                balanceTree(unbalanced, unbalanced.left);
+            } else if (Objects.nonNull(unbalanced.right) && Math.abs(((AVLNode<T>) unbalanced.right).getBf()) > 1) {
+                balanceTree(unbalanced, unbalanced.right);
+            }
+//            balanceTree(null, root);
+            updateBalanceFactor(root);
+        }
+    }
+    public void deleteNode(Node<T> parent, T value) {
+
+        if(Objects.isNull(parent) && root.value.compareTo(value) == 0){
+//            Node<T> temp = new Node<>(root.right.value);
+//
+            if(Objects.nonNull(root.right)){
+            Node<T> right = root.right;
+            root.value = right.value;
+            deleteNode(root,root.value);
+            }else if(Objects.nonNull(root.left)){
+                Node<T> left = root.left;
+                root.value = left.value;
+                deleteNode(root,root.value);
+            }else {
+                root = null;
+            }
+            return;
+        }
+        Node<T> node = null;
+        if (Objects.nonNull(parent.left) && parent.left.value.compareTo(value) == 0) {
+            node = parent.left;
+        }
+        if (Objects.nonNull(parent.right) && parent.right.value.compareTo(value) == 0) {
+            node = parent.right;
+        }
+        // leaf
+        if (Objects.nonNull(node) && node.left == null && node.right == null) {
+            if (parent.left.value.compareTo(value) == 0) {
+                parent.left = null;
+            } else {
+                parent.right = null;
+            }
+        } else
+        if (Objects.nonNull(node) && (Objects.nonNull(node.left) && Objects.isNull(node.right))) {
+            if(Objects.nonNull(parent.left) && parent.left.value.compareTo(value) == 0){
+                parent.left = node.left;
+            }else{
+                parent.right = node.left;
+            }
+        } else if (Objects.nonNull(node) && Objects.nonNull(node.right) && Objects.isNull(node.left)){
+            if(Objects.nonNull(parent.right) && parent.right.value.compareTo(value) == 0){
+                parent.left = node.right;
+            }else{
+                parent.right = node.right;
+            }
+        }else if(Objects.nonNull(node) && Objects.nonNull(node.left) && Objects.nonNull(node.right)){
+            if(Objects.nonNull(parent.left) && parent.left.value.compareTo(value) == 0){
+                parent.left.value = node.right.value;
+                deleteNode(node,node.right.value);
+            }else if (Objects.nonNull(parent.right) && parent.right.value.compareTo(value) == 0){
+                parent.right.value = node.left.value;
+                deleteNode(node,node.left.value);
+            }
+        }
+    }
+
+    public Node<T> findNodeParent(Node<T> node, T value) {
+        if (node.value.compareTo(value) < 0) {
+            if (Objects.nonNull(node.right) && node.right.value.compareTo(value) == 0) {
+                return node;
+            } else {
+                return findNodeParent(node.right, value);
+            }
+        } else if (node.value.compareTo(value) > 0) {
+            if (Objects.nonNull(node.left) && node.left.value.compareTo(value) == 0) {
+                return node;
+            } else {
+                return findNodeParent(node.left, value);
+            }
+        }
+        return null;
+    }
 
     public int updateBalanceFactor(Node<T> node) {
         if (Objects.isNull(node)) {
@@ -44,6 +131,7 @@ public class AVLTree<T extends Comparable<T>> extends BinaryTree<T> {
         ((AVLNode<T>) node).setBf(heightLeft - heightRight);
         return height;
     }
+
 
     public int getHeight(Node<T> node) {
         if (Objects.isNull(node)) {

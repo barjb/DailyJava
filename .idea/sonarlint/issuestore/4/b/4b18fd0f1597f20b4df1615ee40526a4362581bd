@@ -1,8 +1,12 @@
 
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(õúü§8½»»è1
-G	java:S106
-"+Replace this use of System.out by a logger.(çö‰8Í»»è1
-G	java:S106"+Replace this use of System.out by a logger.(©ª×û8Î»»è1
-L	java:S1061"+Replace this use of System.out by a logger.(·Ì©ûÿÿÿÿ8Ñ»»è1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(õúü§8ËÌØè1
+f
+java:S2259;"DA "NullPointerException" could be thrown; "parent" is nullable here.(É¯áßüÿÿÿÿ8ÈÌÌØè1
+X	java:S125"<This block of commented-out lines of code should be removed.(¬˜ß8ÌÌÌØè1
+X	java:S125/"<This block of commented-out lines of code should be removed.(¬˜ß8ÏÌÌØè1
 t
-java:S3776a"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(ÒÀŒ¿úÿÿÿÿ8Ó»»è1
+java:S37763"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(ìôÑ´ûÿÿÿÿ8ÏÌÌØè1
+]	java:S1256"<This block of commented-out lines of code should be removed.(¬´”ºùÿÿÿÿ8’ÜÎØè1
+M	java:S106‡"+Replace this use of System.out by a logger.(·Ì©ûÿÿÿÿ8ÔÌÌØè1
+u
+java:S3776¿"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(ÒÀŒ¿úÿÿÿÿ8×ÌÌØè1

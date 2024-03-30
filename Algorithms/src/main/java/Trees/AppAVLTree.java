@@ -15,5 +15,11 @@ public class AppAVLTree {
         tree.add(50);
         tree.add(49);
         tree.DFS();
+//
+//        tree.delete(49);
+//        tree.DFS();
+//        tree.delete(9);
+//        System.out.println("LAST");
+//        tree.DFS();
     }
 }
