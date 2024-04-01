@@ -27,7 +27,9 @@ public class Node {
     public void setChildren(List<TicTacToe> children) {
         this.children = children;
     }
-
+    public void countChildren(){
+        this.children = postition.getPossibleMoves();
+    }
     public List<TicTacToe> getChildren() {
         return children;
     }

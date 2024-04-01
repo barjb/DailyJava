@@ -34,3 +34,7 @@ j
 :Algorithms/src/main/java/AlphaBetaPruning/Application.java,6\1\617359db4f3fe2688fa4cdc2c03ccf665fc65d2d
 h
 8Algorithms/src/main/java/AlphaBetaPruning/TicTacToe.java,6\0\60e5c6164e54c6976df5e012e6b5cb5b7b9ef4e0
+c
+3Algorithms/src/main/java/AlphaBetaPruning/Tree.java,f\1\f18e33239d6e3d5ceee31e86357a86889a5f8d04
+c
+3Algorithms/src/main/java/AlphaBetaPruning/Node.java,b\2\b28bd2962d6f38959cd230a917fa7a63c8adf39e

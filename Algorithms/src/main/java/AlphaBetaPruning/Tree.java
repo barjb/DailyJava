@@ -16,6 +16,7 @@ public class Tree {
     }
 
     int alphabeta(Node node, int depth, int alpha, int beta, boolean maximizingPlayer) {
+        node.countChildren();
         if (depth == 0 || node.getChildren().isEmpty()) {
             return node.getValue();
         }

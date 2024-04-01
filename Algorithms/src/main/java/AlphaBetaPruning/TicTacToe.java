@@ -28,6 +28,8 @@ public class TicTacToe {
         // 3, 4, 5,
         // 6, 7, 8
         board[field] = sideToMove ? X_REPR : O_REPR;
+        // sideToMove TRUE X
+        // sideToMove FALSE O
         sideToMove = !sideToMove;
         ++currentMove;
     }

@@ -2,13 +2,10 @@ package AlphaBetaPruning;
 
 public class Application {
     public static void main(String[] args) {
-        TicTacToe t1 = new TicTacToe(false);
-        t1.move(0);
-        System.out.println(t1);
-        t1.move(1);
-        t1.move(3);
-        t1.move(2);
-        t1.move(6);
-        System.out.println(t1);
+        TicTacToe t1 = new TicTacToe(true);
+        Node root = new Node(t1);
+        Tree tree = new Tree(root);
+        int alphabetaed = tree.alphabeta(tree.getRoot(), 9, Integer.MIN_VALUE, Integer.MAX_VALUE, true);
+        System.out.println(alphabetaed);
     }
 }
