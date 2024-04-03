@@ -18,8 +18,9 @@ public class TicTacToe {
         board = new byte[9];
         this.sideToMove = sideToMove;
     }
-    public TicTacToe(byte[] board,boolean sideToMove){
+    public TicTacToe(byte[] board,int currentMove,boolean sideToMove){
         this.board = Arrays.copyOf(board,board.length);
+        this.currentMove  = currentMove;
         this.sideToMove = sideToMove;
     }
 
@@ -55,17 +56,22 @@ public class TicTacToe {
 
     public int value() {
         if (!isGameResultDecided() && isFinished()) return DRAW;
+        // next is o
         if (isGameResultDecided() && !sideToMove) return X_WIN;
+        // next is x
         if (isGameResultDecided() && sideToMove) return O_WIN;
         return -1;
     }
     public List<TicTacToe> getPossibleMoves(){
+        if(value() != -1){
+            return List.of();
+        }
         List<TicTacToe> childrenList = new ArrayList<>();
         for(int i = 0 ; i< board.length; i++){
             if(board[i] == 0){
                 byte[] temp = Arrays.copyOf(board,board.length);
                 temp[i] = sideToMove ? X_REPR : O_REPR;
-                childrenList.add(new TicTacToe(temp,!sideToMove));
+                childrenList.add(new TicTacToe(temp,currentMove+1,!sideToMove));
             }
         }
         return childrenList;
