@@ -3,6 +3,10 @@ package AlphaBetaPruning;
 import java.util.List;
 
 public class Node {
+    public TicTacToe getPostition() {
+        return postition;
+    }
+
     private final TicTacToe postition;
     private List<TicTacToe> children;
     private int processed = 0;
