@@ -7,10 +7,6 @@ public class Tree {
         this.root = root;
     }
 
-    public Node getRoot() {
-        return root;
-    }
-
     public void setRoot(Node root) {
         this.root = root;
     }
@@ -25,7 +21,6 @@ public class Tree {
             int value = Integer.MIN_VALUE;
             for (var current :
                     node.getChildren()) {
-//                value = Math.max(value,alphabeta(new Node(current),depth-1,alpha,beta,false));
                 Node newValue = alphabeta(new Node(current), depth - 1, alpha, beta, false);
                 if (newValue.getValue() > value) {
                     value = newValue.getValue();
@@ -42,7 +37,6 @@ public class Tree {
 
             for (var current : node.getChildren()) {
                 Node newValue = alphabeta(new Node(current), depth - 1, alpha, beta, true);
-//                value = Math.min(value, alphabeta(new Node(current), depth - 1, alpha, beta, true));
                 if (newValue.getValue() < value) {
                     value = newValue.getValue();
                     toreturn = new Node(current);

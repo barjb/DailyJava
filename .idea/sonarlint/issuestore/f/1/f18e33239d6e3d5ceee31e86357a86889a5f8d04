@@ -1,9 +1,6 @@
 
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¼÷ÿœ8è’¤¥ê1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¼÷ÿœ8¿Îªÿê1
 t
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(êþ«Ïþÿÿÿÿ8““¤¥ê1
-Y
-java:S18541"<Remove this useless assignment to local variable "toreturn".(ê½Ô•8¢…®ê1
-W	java:S125"<This block of commented-out lines of code should be removed.(Åïøs8•“¤¥ê1
-L	java:S106'"+Replace this use of System.out by a logger.(Éû—‚ÿÿÿÿÿ8–“¤¥ê1
-]	java:S125."<This block of commented-out lines of code should be removed.(’‚¡úÿÿÿÿ8—“¤¥ê1
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(ËšÇ…úÿÿÿÿ8ÅÎªÿê1
+W	java:S125"<This block of commented-out lines of code should be removed.(Åïøs8ÉÎªÿê1
+]	java:S125-"<This block of commented-out lines of code should be removed.(’‚¡úÿÿÿÿ8ËÎªÿê1

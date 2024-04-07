@@ -11,7 +11,7 @@ public class TicTacToe {
     public static final int O_WIN = 0;
     public static final int DRAW = 50;
     private final byte[] board;
-    private int currentMove = 1;
+    private int currentMove = 0;
     private boolean sideToMove; // true X, false O
 
     public TicTacToe(boolean sideToMove) {
@@ -33,6 +33,10 @@ public class TicTacToe {
         // sideToMove FALSE O
         sideToMove = !sideToMove;
         ++currentMove;
+    }
+
+    public boolean getSideToMove() {
+        return sideToMove;
     }
 
     public int getCurrentMove() {
@@ -62,6 +66,14 @@ public class TicTacToe {
         if (isGameResultDecided() && sideToMove) return O_WIN;
         return -1;
     }
+    public String stringValue(){
+        if (!isGameResultDecided() && isFinished()) return "DRAW!";
+        // next is o
+        if (isGameResultDecided() && !sideToMove) return "X has won!";
+        // next is x
+        if (isGameResultDecided() && sideToMove) return "O has won!";
+        return "Game in progress...";
+    }
     public List<TicTacToe> getPossibleMoves(){
         if(value() != -1){
             return List.of();
@@ -77,12 +89,21 @@ public class TicTacToe {
         return childrenList;
     }
 
-    public byte[] getBoard() {
-        return board;
-    }
 
     @Override
     public String toString() {
-        return "sideToMove: " + (sideToMove ? "X\n" : "O\n") + "board=" + Arrays.toString(board) + '\n' + "IsGameDecided: " + isGameResultDecided() + " isFinished: " + isFinished() + " result: " + value()+ "\n";
+        StringBuilder b = new StringBuilder();
+        for(int i = 0; i<9; i++){
+            if(i %3 == 0 && (i != 0)) b.append("|\n__________\n");
+            b.append(board[i] == 1 ? "| X" : board[i] == 4? "| O" : "|  ");
+        }
+        b.append("|");
+        return b.toString();
+    }
+    public int getMove(TicTacToe other){
+        for (int i = 0; i< board.length; i++){
+            if(other.board[i] != board[i]) return i;
+        }
+        return -1;
     }
 }
