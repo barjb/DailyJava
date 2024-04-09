@@ -1,2 +1,4 @@
 
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¼÷ÿœ8Áã§£ê1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¼÷ÿœ8Ú„ªÃë1
+a
+java:S3358b"DExtract this nested ternary operation into an independent statement.(„˜ÞÀ8¸…ªÃë1
